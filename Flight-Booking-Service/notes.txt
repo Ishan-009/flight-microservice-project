@@ -1,0 +1,27 @@
+in sequelize orm, you have to create a model which has to have table name and then in that model you can define your schema and constraints , once you craete model it will also crate migration file for that model/table 
+
+so here important point hjere you have to define db level constraint and js level model constraint like allowNull properties as js will intereact with model code and other db also has to have constraint 
+
+In short you have to add same constraint in both files :- migration and model 
+
+for data types check their documentation 
+
+db/model changes 
+
+Here if you make changes in model in schema for example like adding default value or somethign like that it will only reflect in your javascript level code aas it will be intereact with your model but at db level it will not reflect 
+as we have made changes and not migrated the code 
+
+doing stuff without migration 
+
+using db sync , but here we wont be able to properly have migration feature like rolling back and maintaining vertsion control 
+
+Raw Queries 
+
+Operators 
+Op.adn , OP.or, OP.like, op.notlike 
+
+
+query related stuff will go in respository folder 
+
+there is error class in the javascript which you can extend and work with it to make your error handling logic 
+
