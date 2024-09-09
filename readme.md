@@ -129,7 +129,7 @@ Edit `config/config.json` in each microservice to set up your database configura
 
 ### 4. Environment Variables
 
-Create a `.env` file in each microservice directory based on the reference of `.env.example` `config/server-config` file:
+Create a `.env` file in each microservice directory based on the reference of `.env.example` or the `config/server-config` file:
 
 ```bash
 cp .env.example .env
