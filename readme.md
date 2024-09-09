@@ -1,18 +1,59 @@
-# DevRev-AirLine
+# Flight Booking System
 
-## Project Description
+## Live
 
-DevRev-Air, a highly efficient and reliable **Backend Application** responsible for seamlessly managing multiple facets of flight operations, including **flight management**, **booking systems**, **real-time notifications**, and **secure payment** processing. It incorporates a **Microservice MVC architecture**, which guarantees both **scalability** and **availability** of the system.
+<!-- The deployed application can be fetched at [flights.keshavcarpenter.tech](https://flights.keshavcarpenter.tech/api/v1/info). -->
+<!-- Please refer to the Postman Docs to understand the APIs and try out [Postman Collection](https://documenter.getpostman.com/view/27853841/2sA3XJmkR8) -->
 
-## Non-Functional Requirements
+## Description
 
-### 1. To prevent conflicts and inconsistencies, the application incorporates **Transaction Isolation Level**, which ensures that no two users can simultaneously book the same seat.
+This is an Airline managemnet and flight booking system based on microservices architecture. It has 4 microservices:
 
-### 2. To avoid unintended consequences and accidental duplicate calls during the payment process, the payment gateway implements **Idempotency APIs**.
+1. Flight Service
+2. Booking Service
+3. Authentication Service
+4. Notification Service
 
-</br>
+## Non Functional Requirements
 
-## High Level Design
+Non functional Requirements
 
-<img src="./DevRev-AirLine.png"  width="1400" height="550">
-****
+1.  We can expect more flight searching than bookings
+2.  The system needs to be reliable in terms of booking
+3.  Expect that we will be having 100k total users.
+4.  100k bookings might come up in quarter
+5.  In one day you might be getting 100 bookings
+6.  System should make sure that we don?t change the prices where the
+    booking payment is going on.
+7.  System should be able to auto scale itself atleast for 3x more traffic.
+
+## Design
+
+![HLD-Design of Flight Booking System](hld-complete.png)
+
+## ER Diagram
+
+### For Flights DB
+
+![ER Diagram](er.png)
+
+### For Notification DB
+
+![ER Diagram](notificationdb.png)
+
+## Functionalities
+
+1. Flight Service : CRUD operations on all flight db models
+2. Booking Service : Book or cancel a booking
+3. Notification Service : Send email notifications to users on booking, cancellation. Run CRON jobs to check for upcoming flights and send notifications.
+4. Authentication/API-Gateway Service : Signin, Signup, Reverse proxy for Flight Search and Booking Service
+
+## Tech Stack
+
+1.  NodeJS
+2.  ExpressJS
+3.  MySQL
+4.  Sequelize
+5.  RabbitMQ
+6.  NodeMailer
+7.  JWT
